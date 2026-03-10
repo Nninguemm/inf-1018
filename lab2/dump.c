@@ -10,6 +10,14 @@ void dump (void *p, int n) {
 
 int main (void) {
   char c[] = "A \n$";
-  dump(c, sizeof(c));
+  int i = 10000;
+  char a = 'a';
+  short int i2 = 10000;
+  long int i3 = 10000;
+  dump(&c, sizeof(c));
+  dump(&a, sizeof(a));
+  dump(&i2, sizeof(i2));
+  dump(&i3, sizeof(i3));
+  dump(&i, sizeof(i));
   return 0;
 }
