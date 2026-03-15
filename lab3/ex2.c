@@ -2,20 +2,21 @@
 
 int odd_ones(unsigned int x) 
 {
-    // par -> impar -> par
-    x = x>>24;
-    int bits = 0;
-    for (int i = 0; i < 3; ++i)
+    int bits = 0; //começa com 0 par 
+    unsigned int pegar_ultimo = 1;
+    for (int i = 0; i < 32; ++i)
     {
+        if ((x & pegar_ultimo) == 1) //acho q da para usar ^ 
+        {
+            bits = !bits; 
+        }
+
         x = x>>1;
 
     }
-    //0000 0000 0000 01010
-
-
+    return bits;
 
 }
-
 
 int main() {
   printf("%x tem numero %s de bits\n",0x01010101,odd_ones(0x01010101) ? "impar":"par");
