@@ -1,0 +1,24 @@
+Arthur Guimaraes Pellenz 3WB
+LAB 4 Relatório:
+
+1) Analisando o código da função 1 e fazendo as contas de transformação de base, acredito que o char resultará em 96 mas não
+tenho certeza, já que o char vai até 127 (testando, percebi que o compilador interpreta como se fosse um unsigned e então printa 150),
+enquanto para as outras variáveis, ao utilizar o complemento a 2, achei que o shor ira imprimir FDFF, e o int 69FFFFFF e tudo está correto.
+
+2) Analisando o código, as duas variáveis l = -32765 e k = 32771, porém, ao converter para hexadecimal 
+e printar os valores, as duas aparecem como 03 80 (= 8003), isso ocorre pois o número negativo é representado em complemento a 2
+assim, ao calcular o que deveria ser o o l em binário, o resultado é "o mesmo número" do k, já que o complemento a 2, para cada valor 
+tem-se um número positivo (32771) e um negativo (-32765), ai na hora de calcular para hexadecimal, fica a mesma coisa.
+
+3) Ao complentar a função xbyte, eu desloquei o primeiro byte de acordo com o parametro (24-(bytenum*8) e depois eu coloquei isso em uma
+nova variável signed int e, com isso, verifiquei se o o ultimo bite == 1 (número negativo) (inteiro>>7 == 1)
+depois retornei: inteiro = inteiro | 0xFFFFFF00;
+
+4) No programa 1, ocorre uma comparação com 2 signed int, ou seja, -1 será menor que 2, no programa 2 ocorre uma comparação com
+2 unsigned int, assim, o x = ffffffff se transforma em um número positivo enorme e será maior que y, entretanto, como no print está %d
+está pedindo para mostrar um signal int e por isso aparece o -1. Já no programa 3, o resultado de x maior que y ocorre pois ao comparar~
+um signal com unsignal int, o inteiro com sinal vira sem sinal e então, de -1 vira um número positivo maior que o y.
+
+5)o código deve irá preencher os bits equivalentes a -1 (1111 1111) ao último byte do int, porém, como o valor original é um signed 
+de uma variável com valor negativo, os bytes restantes a esquerda serão completados com 1 e, assim, todos os bites terão como valor 1,
+primeiro ocorre extensão de sinal e só depois muda a interpretação do tipo.
