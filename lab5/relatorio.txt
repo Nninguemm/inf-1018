@@ -1,0 +1,44 @@
+Arthur Guimaraes Pellenz 3WB
+LAB 5 Relatório:
+
+1) a variável b possui 8 bytes, enquanto a variável a possui 12 bytes. A função dump mostra: 
+b: 
+0x7fff2321c524 - 00
+0x7fff2321c525 - 00
+0x7fff2321c526 - 00
+0x7fff2321c527 - 00
+0x7fff2321c528 - 01
+0x7fff2321c529 - 00
+0x7fff2321c52a - 00
+0x7fff2321c52b - 00
+a: 
+0x7fff2321c52c - 00
+0x7fff2321c52d - 00
+0x7fff2321c52e - 01
+0x7fff2321c52f - 00
+0x7fff2321c530 - 02
+0x7fff2321c531 - 00
+0x7fff2321c532 - 03
+0x7fff2321c533 - 00
+0x7fff2321c534 - 04
+0x7fff2321c535 - 00
+0x7fff2321c536 - 05
+0x7fff2321c537 - 00
+como no primeiro for vai até menos que 2 e começa no 0, o segundo byte da variável b ganha o valor 1 e seguindo esse for:
+    for (j=0;j<3;j++)
+      a[i][j] = 3*i+j;
+a variável a, incremente o valor da primeira linha de 0 até 2, enquanto da segunda linha (com i =1), de 3 até 5
+
+
+2) Ao utilizar o função dump, ocorre o print e a estrutura é armazenada como a4a3a2a1 b1b20000 c4c3c2, isso ocorre porque o struct
+deve manter a métrica de sua primeira variável, assim, como ela é um int (4 bytes), as próximas variáveis devem terminar em um 
+múltiplo de 4 (para caso cria outro struct do mesmo tipo na memória). Utilizando sizeof, tem-se como 12 bytes a estrutura.
+
+3)o tamanho do struct X1 é 12 bytes e os tipos são organizados por múltiplos de 4 (ocorre padding depois dos chars), o tamanho do struct X2 é 16 bytes e os tipos
+são organizados por múltiplos de 8 (tendo um padding no final por conta do char), o tamanho do struct X3 é 8 bytes e os tipos
+são organizados por múltiplos de 4 (tendo um padding no final por conta do char), o tamanho do struct X4 é 24 bytes e os tipos são 
+organizados por múltiplos finais de 8 (tendo um padding no final por conta do char e o início do struct dentro (X2) ser um long )
+,o tamanho do struct X5 é 3 bytes e os tipos são organizados por múltiplos de 1, o tamanho do struct X6 é 16 e os tipos finais são
+organizados por múltiplos de 2 (tendo padding depois do primeiro short e do char);
+o tamanho da union U1 é 8 bytes, pois segue 5 bytes da variável de maior valor junto com o alinhamento do int (ser multiplo de 4)
+o tamanho da union U2 é 6 bytes, pois segue 5 bytes da variável de maior valor junto com o alinhamento do short (ser multiplo de 2)
