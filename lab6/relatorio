@@ -1,0 +1,24 @@
+Arthur Pellenz 3WB
+
+LAB 6 RELATÓRIO:
+
+1) Tanto o código em assembly quanto em C, fazem um loop para printar variáveis int de um vetor. Assim, há alguns paralelos no código
+como essa linha é o equivalente ao printf do c:call printf , essa é equivalente a variável nums: nums: .int  10, -21, -30, 45,
+e essa a função main:   .globl  main
+                        main:
+
+2) para a função começar com a soma, eu transformei o registrador %eax em %r13d, assim não se perdendo o valor depois do print.
+Além disso, eu inicializei colocando seu valor como zero: movl $0, %r13d e fiz addl (%r12), %r13d para ir adicionando os elementos.
+Tendo como resultado 10, -11, -41, 4
+
+3) Primeiramente criei um registrador auxiliar (movl %eax, %r13d) e depois utilizei um and com o número para zerar todos os valores
+e deixar apenas o último bit como 0 ou 1 (and $1, %r13d). Depois comparei para se for igual a zero (cmpl $0, %r13d) e caso
+fosse, iria para um label que eu criei e coloquei o print (je print_par). Resultado nos prints: 10, -30
+
+4) Para printar um valor inteiro do vetor de bytes/char, é necessário fazer um extensão dos bytes após o movq $nums, %r12 (que
+passa o valor do char para o registrador r12), assim , se fosse o int o código era movl  (%r12), %eax, entretanto, para fazer
+uma extensão de bytes de 1 byte (char) para 4 bytes (print do int) e com sinal, modifiquei a linha para movsbl (%r12), %eax (mover
+1 byte de r12 para 4 bytes de eax, tudo com sinal). No final, em vez de acresentar 4 no endereço (pula para o proximo int), eu
+acresentei 1 (pula para o próximo char) addq  $1, %r12.
+
+
