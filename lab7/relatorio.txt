@@ -1,0 +1,56 @@
+Arthur Pellenz 3WB
+
+LAB 7 RELATÓRIO:
+
+1) Ao comparar o código de assembly com C é possível fazer algumas comparações, como   cmpb  $0, (%r12)  /* if (*pc == 0) ? */ 
+e je  L2 /* goto L2 */, é o caso do while, mas em assembly é condicionado inverso (se o if estiver correto e cair para o L2,
+o loop termina), enquanto isso, ao seguir o restante do bloco de código (dentro do loop), no final tem-se 0 jmp  L1, para assim, 
+voltar ao início do loop. Assim, ao printar a string, interpretando cada caracter como um char, tem-se o printf Alo {galera}!
+
+2)Ao mudar o código em C para if (*pc != '{' && *pc !='}') -> printf ("%c", *pc++); e o código de assembly para 
+  cmpb $'{', (%r12)
+  je Final_while
+  cmpb $'}', (%r12)
+  je Final_while
+
+Final_while:
+  addq  $1, %r12  /* r12 += 1; */
+  jmp  L1         /* goto L1; */
+  
+fazendo um curto circuito para caso caia na primeira validação, não seja necessário verificar a segunda condição,
+tem-se o printf Alo galera!
+
+3) Para adaptar o código C para assembly primeiramente utilizei a base dos códigos já vistos nos ex1 e ex2 (já que, boa parte do código
+ainda não foi completamente explicada em sala), após isso estruturei o código para printar os quadrados dos números. Começei o registrador,
+referente a variável i ou num, com movl  $1, %ebx, após isso fiz essa estrutura para manter o loop do while   
+  cmpl  $10, %ebx  
+  jg  L2            
+
+  movl  %ebx, %eax  
+  imull %eax, %eax  
+
+  movq    $Sf, %rdi   
+  movl    %eax, %esi  
+  movl    $0, %eax
+  call    printf
+
+  addl  $1, %ebx   
+  jmp  L1         
+
+Assim, caso a comparação resulte como um número maior de 10, vai pular para o label L2 (final do código). No final, tem-se como 
+print: 4 9 16 25 36 49 64 81 100
+
+
+4) para traduzir o código de c em assembly (fazendo a lógica do índice), foi necessário criar um registrador para o i (%ebx),
+um registrador para guardar o primeiro endereço do array (%r12), um registrador para armazenar o valor de um elemento (%rcx) e,
+por último, uma registrador para fazer a soma (%r13d). Dessa forma, a partir desse passo a passo:
+
+  cmpl $4, %ebx
+  jge L2
+  movl %ebx, %edx
+  imull $4, %edx
+  movq %r12, %rcx
+  addq %rdx, %rcx
+  addl (%rcx), %r13d
+
+A principal lógica é feita e, ao rodar o código, tem-se o resultado: soma = 105
