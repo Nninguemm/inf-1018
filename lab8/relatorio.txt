@@ -1,0 +1,31 @@
+Arthur Pellenz 3WB
+
+LAB 8 RELATÓRIO:
+
+1) Para adaptar a função C em Assembly, coloquei essas duas linhas: movq  $s1, %rdi e call system. Para assim passar como parametro
+o s1 e chamar a função system, tendo como resultado:
+total 24
+16 -rwxrwxrwx 1 codespace codespace 15832 Apr  9 15:39 ex1
+ 4 -rw-rw-rw- 1 codespace codespace   301 Apr  9 15:39 ex1.s
+ 4 -rw-rw-rw- 1 codespace codespace   228 Apr 10 23:18 relatorio.txt
+
+2) Para adaptar o código C em Assembly, fiz um loop com cmp $5, %rbx jl loop e primeiro fiz uma chamada da função filtro, pego
+o valor retornado por ela e coloco no registrador de segundo parametro para ser usado na chamada da função print:
+
+     /* chamada do filtro */
+     movl (%r12), %edi 
+     movq $1, %rsi
+     call filtro
+
+     movslq %eax, %rsi /* coloca valor retornado do filtro para registrador de segundo parametro */
+
+     movq $s1, %rdi /* chamada do print */
+     call printf
+
+     /* chamada do printf */
+     addq $4, %r12
+     addq $1, %rbx
+     cmp $5, %rbx
+     jl loop
+
+Assim, como retorno do código, tem-se o mesmo resultado: 3 0 7 8 0
