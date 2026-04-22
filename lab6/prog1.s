@@ -18,11 +18,11 @@ main:
 
 /********************************************************/
 /* mantenha este trecho aqui e nao mexa - prologo !!!   */
-  pushq   %rbp
-  movq    %rsp, %rbp
-  subq    $16, %rsp
-  movq    %rbx, -8(%rbp)
-  movq    %r12, -16(%rbp)
+  pushq   %rbp            # salva o endereço de RA na função chamadora na pilha
+  movq    %rsp, %rbp      # faz o RBP apontar para o RA da função chamada
+  subq    $16, %rsp       # abre espaço de 16 bytes para o RA da chamada
+  movq    %rbx, -8(%rbp)  # salva valores originais
+  movq    %r12, -16(%rbp) # salva valores originais
 /********************************************************/
 
   movl  $0, %ebx  /* ebx = 0; */
@@ -49,8 +49,8 @@ L2:
 /***************************************************************/
 /* mantenha este trecho aqui e nao mexa - finalizacao!!!!      */
   movq  $0, %rax  /* rax = 0  (valor de retorno) */
-  movq  -8(%rbp), %rbx
-  movq  -16(%rbp), %r12
-  leave
+  movq  -8(%rbp), %rbx  #restaura os valores originais
+  movq  -16(%rbp), %r12 #restaura os valores originais
+  leave # destroi o RA da função chamada e restaura o RA da chamadora
   ret      
 /***************************************************************/

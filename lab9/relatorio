@@ -1,0 +1,20 @@
+Arthur Pellenz 3WB
+
+LAB 9 RELATÓRIO:
+
+1) para traduzir a função em assembly eu utilizei o procedimento padrão de puxar o ponteiro da base do RA e aloquei
+16 bytes na memória, já que utilizei 4 variáveis int , dessa forma eu fiz a soma dos resgistradores de parametros em uma
+variável local e retornei com o eax (finalizando o código em ret e leave). Assim, ao compilar, saiu o resultado 6.
+
+2) para traduzir a recursão em assembly eu fiz um caso base para retorno e um outro de retorno geral, assim utilizei um resgistrador
+called save para salvar valores toda que vez que ocorrer uma instancia da recursão. Ao testar o código com um main c, obtive o resultado:
+fat(5) = 120
+fat(7) = 5040
+
+3) para traduzir a função para assembly utilizei diversos registradores para fazer o índice do vetor, cálculando assim, para cada instancia
+do loop o que é a[i] e fazendo as devidas comparações com jmp (ex:movl $0,%r11d jmp inicio_loop ). Assim, fiz um código em C para utilizar
+a função de assembly, comparando um vetor antes e um vetor depois do foo, dando como resultado:
+Antes:
+1 2 0 3 4 0 5 0 
+Depois:
+1 2 3 3 4 7 5 5 

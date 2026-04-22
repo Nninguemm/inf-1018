@@ -18,7 +18,7 @@
   loop:
 
      /* chamada do filtro */
-     movl (%r12), %edi /* pega da memória o int do ponteiro, por isso 32 bits */
+     movl (%r12), %edi /* pega da memória o int do ponteiro, por isso 32 bits e o parenteses*/
      movq $1, %rsi
      call filtro
 
