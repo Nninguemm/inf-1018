@@ -1,0 +1,33 @@
+Arthur Pellenz 3WB
+
+LAB 10 RELATÓRIO:
+
+1) para aplicar a função add em assembly utilizei um registrador para ser a variável a, fiz addl (%rdi),%r10d para acresentar o valor
+no a e movq 8(%rdi), %rdi para colocar o endereço do próximo struct da lista no rdi (utilizei 8 porque 4 bytes de int e 4 para padding do
+ponteiro de x), além de comparar o struct com null no cmpq $0, %rdi. No final, ao compilar, tem-se resultado de add: 45.
+
+2) para utilizar a função agora com recursão, usei o registrador r12d (callee-saved) como auxiliador, assim %r12 é salvo e restaurado em cada frame
+para ser fazer a soma de cada elemento de acordo com a recursão (salvo o valor de cada chamada no -8(%rbp)). Assim, tendo como o mesmo
+resultado resultado de add: 45
+
+3) para converter a função em assembly tive que guardar os valores dos registradores de parametro 1,2,3 para, após a chamada da função f,
+eu voltar com os valores originais dos registradores e atualizar o px->valor2, para assim no final resultar: 
+Antes: {1,0} {2,0} {3,0} 
+Depois: {1,2} {2,2} {3,3}
+
+4) transformando a função em assembly, salvei todos os parametros no RA e depois recuperei eles conforme o loop e para fazer 
+a aritmética de ponteiros utilizei: 
+    movl %ecx, %r8d 
+    imulq $4, %r8
+    addq %rdi, %r8
+como resultado obtive:
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
