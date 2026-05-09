@@ -1,0 +1,10 @@
+Arthur Pellenz 3WB
+
+LAB 11 RELATÓRIO:
+
+1) Para traduzir a fubção para assembly utilizei parte do RA -4(rbp) para ser a variável int, fiz um leaq para o scanf e assim, ao olocar qualquer
+número no console, aparece: numero: 463
+                                    463
+
+2) Primeiro, ao se compilar a função c completa, aparece: 20. Depois de traduzir e função bemboba em assembly utilizei apenas e vetor
+local[4] para reservar espaço local no RA e utilizei o leaq para colocar seu endereço na variável a, assim tendo como o mesmo resultado: 20
