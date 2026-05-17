@@ -1,0 +1,31 @@
+Arthur Pellenz 3WB
+
+LAB 13 RELATÓRIO:
+
+1) Transformei a função foo em c para assembly, criando o foo.s 
+
+2) Utilizei o comando gcc -c -o foo.o foo.s e após isso verifiquei o codigo com objdump -d foo.o, fazendo assim o "disassembly"
+do arquivo
+
+3) Criei o array 
+unsigned char codigo [] = { 
+   0x55,                      //push   %rbp
+   0x48, 0x89, 0xe5,          //mov    %rsp,%rbp
+   0x48, 0x83, 0xec, 0x10,    //sub    $0x10,%rsp
+   0xff, 0xc7,                //inc    %edi
+   0x89, 0xf8,                //mov    %edi,%eax
+   0xc9,                      //leave
+   0xc3,                      //ret
+};
+e depois criei o novo tipo de ponteiro pata funcao que retornar int e recebe int, ao utilizar o código do enunciado para funcionar as 
+variáveis globais (.data) na área de memória obtive o resultado: f(i) = 11
+
+4) Ao transformar a função em assembly, o código para a função call está como e8 00 00 00 00, mostrando que o enunciado está correto com o
+valor sendo default e nao correto ao offset para a função
+
+5) Ao calcular o offset da função a partir de 
+offset = (long)add - (long)(codigo+9);   // funcao - rip;
+*(int *)(codigo+5) = offset;
+e rodar o código, tem-se o resultado: f(5) = 6
+
+6) Ao utilizar o comando objdump, na linha 4 tem-se e9 00 00 00 00  jmp  9 <foo+0x9>, mostrando que é o mesmo comportamento de call
