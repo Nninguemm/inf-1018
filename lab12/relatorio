@@ -2,13 +2,18 @@ ARTHUR PELLENZ
 
 LAB 12:
 
-1) 
+1) Ao criar o arquivo de texto para string invasora e utilizar os comandos, recebo como retorno:
+buf: 0x7fffffffce20
+Ouch!: You caused a segmentation fault!
+Better luck next time
+
+
+2) Mudando o txt para 67 12 40 00 00 00 00 00 tem-se como resultado:
+buf: 0x7fffffffce20
+Smoke!: You called smoke()
 
 
 
-
-2)
-
-
-
-3)
+3) Ao colocar a string correta para o novo arquivo de stringinvasora, tem-se:
+buf: 0x7fffffffce20
+Fizz!: You called fizz(0x1020304)
