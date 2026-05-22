@@ -1,0 +1,17 @@
+Arthur Pellenz 3WB
+
+LAB 14 RELATÓRIO:
+
+1) Para transformar o float em seu dobro do valor apenas somei em 1 no expoente, assim tendo o resultado:
+dobro de 2.250000 = 4.500000
+
+2) para transformar o int no float peguei o sinal verificando se i é negativo ou positivo, depois calculei o expoente e somei com
+127, após isso fiz um calculo para calcular a mantissa correta e montei o float, tendo como resultado:
+******** int2float ****************
+ 0 ->    +0.0000
+ 1 ->    +1.0000
+ -1 ->    -1.0000
+ 2147483647 -> +2147483520.0000
+ -2147483647 -> -2147483520.0000
+ 12345 -> +12345.0000
+ -12345 -> -12345.0000
