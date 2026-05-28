@@ -1,0 +1,17 @@
+Arthur Pellenz 3WB
+
+LAB 15 RELATÓRIO:
+
+1) Ao testar a função tem-se como resultado, a = 10.50 b = 2.50 Resultado = 104.00. Sem o protótipo da função o compilador não sabe
+quais são os parametros e o tipo de retorno da função, por isso não roda
+
+2) Para foo2 salvei xmm1 no RA e dps resgatei ele, como resultado: a = 1.00 b = 2.00 Resultado = 2.841471
+
+3) salvei primeiro o registrador xmm1 e na segunda chamada salver o xmm0 ja como double, assim: a = 1.00 b = 0.50 Resultado = 1.719054
+
+4) salvei todos os registradores a cada inicio de loop e resgatei eles depois do call, como resultado:
+vetor[0] = 0.00
+vetor[1] = 1.00
+vetor[2] = 2.00
+vetor[3] = 3.00
+Resultado = 1.891888
