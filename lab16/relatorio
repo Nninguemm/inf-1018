@@ -1,0 +1,25 @@
+Arthur Pellenz 3WB
+
+LAB 16 RELATÓRIO:
+
+1) executei os comandos sem dar nenhum erro.
+
+2) os símbolos são significam U -> undefined, T -> text D -> data.
+
+3) aparece o erro: conflicting types for ‘a’; have ‘char’, porque a declaração do a ocorreu como int no temp.h (extern int a).
+Esse erro ocorre na compilação. Ao criar o arquivo header definindo uma variavel com extern e seu tipo, garante uma consistencia
+de declarações dessa variável para manter o mesmo tipo.
+
+4.a) como resultado do print tem-se que a = 1277, isso acontece pois há duas declarações de tipos a (char e int), assim primeiramente
+se define o inteiro 1024 e na hora de colocar = -3 o a está como char, assim, apenas o primeiro byte vai ser sobeescrito, dessa forma
+a junção desses 2 a acabam formando 1277
+4.b) o executável não foi gerado e ocorreu um erro (multiple definition of `a'). Isso ocorreu no processo de linkedição pois há mais 
+de uma definição de variável inteira com nome a na área de data (o a do temp1.c e do temp2.c)
+4.c) ao trocar por static o executavel printa a = 1024, isso ocorre pois na função foo (temp2.c) a variável a é local do arquivo e,
+dessa forma, o a do temp1.c continua intacto.
+
+5) durante os comandos ocorreu alguns warnings de acordo com com a linha b(); (implicit declaration of function ‘b’), já que b é 
+definido em outro módulo como uma variável, não uma função. Ao executar o programa, ocorreu Segmentation fault (core dumped), esse
+erro ocorreu justamente pela linha de b().
+
+5.b) continua ocorrendo o mesmo erro de Segmentation fault (core dumped), visto que a função b() continua não existindo.
