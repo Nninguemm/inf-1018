@@ -11,7 +11,18 @@ cria_func:
 
     movl $189, %edx
     
+    movq $0x123456789abcdef0,%rdi
 
+    movq $0x123456789abcdef0,%rsi
+
+    movq $0x123456789abcdef0,%rdx
+
+
+    
+    movq $0x123456789abcdef0, %r10
+
+    call *%r10
+    call *%r12
 
 
     leave
