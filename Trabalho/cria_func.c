@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include "cria_func.h"
 
+
 //Inicio do pushq e RA
 void inicio(unsigned char codigo[], int *indice)
 {
