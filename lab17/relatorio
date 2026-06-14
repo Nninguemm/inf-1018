@@ -2,3 +2,23 @@ Arthur Pellenz 3WB
 
 LAB 17 RELATÓRIO:
 
+1) o dump funcionou corretamente dando os resultados previstos
+
+2) a função foo funcionou:
+foo(4.5, 2)  = -9.00
+foo(4.5, -2) = 9.00
+
+3) utilizando o main como teste, a função funcionou
+Resultado = -21.00
+
+4) para o teste do pack1 a função também funcionou corretamente:
+-21.00
+
+5) 
+0000000000000000 B buff
+                 U f
+0000000000000000 T g
+                 U i
+0000000000000008 b k
+
+o resultado do print seria "0", pois o k do print é apenas o do modulo novo, nao o do arq.c
